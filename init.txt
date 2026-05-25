@@ -1,0 +1,2 @@
+1 ayam goreng
+>>>>>>> parent of 65f5300 (2)
