@@ -1,3 +1,4 @@
 1 ayam goreng
 2 memasukkan logic back end
 3 memasukkan logic front end
+4 memasukkan assets gambar
