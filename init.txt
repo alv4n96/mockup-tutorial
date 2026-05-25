@@ -1,2 +1,2 @@
 1 ayam goreng
->>>>>>> parent of 65f5300 (2)
+2 memasukkan logic back end
