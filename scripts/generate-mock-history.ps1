@@ -3,13 +3,14 @@
 Generates a tutorial-only mock Git activity schedule.
 
 .DESCRIPTION
-By default this script creates or updates mock-history/*.md files and prints example git commit commands using --date.
-It is intended for tutorial material. It does not execute commits unless
--Execute is passed explicitly.
+By default this script creates or updates mock-history/*.md files, prints example
+`git commit --date=...` commands, and stages the generated files with `git add`.
 
-The generated schedule starts at 2026-02-13, ends at 2026-07-06,
-skips Saturday and Sunday, and creates 3 to 6 sample commit commands
-for each weekday.
+Use -CommitGenerated to create a normal current-date commit for the generated
+files. Use -Push together with -CommitGenerated to push the current branch.
+
+The script writes to the repository root mock-history/ folder by default, even
+when the command is executed from another directory.
 #>
 
 param(
@@ -17,7 +18,9 @@ param(
     [datetime]$EndDate = '2026-07-06',
     [string]$TimezoneOffset = '+0700',
     [string]$OutputDirectory = (Join-Path (Split-Path $PSScriptRoot -Parent) 'mock-history'),
-    [switch]$GenerateFiles,
+    [switch]$NoStage,
+    [switch]$CommitGenerated,
+    [switch]$Push,
     [switch]$Execute
 )
 
@@ -62,18 +65,16 @@ if ($EndDate -lt $StartDate) {
     throw 'EndDate must be greater than or equal to StartDate.'
 }
 
-if (-not $GenerateFiles -and -not $Execute) {
-    $GenerateFiles = $true
+if ($Push -and -not $CommitGenerated) {
+    throw 'Use -CommitGenerated with -Push so there is a commit to push.'
 }
 
 Write-Host '# Mock Git Activity Commands'
-Write-Host '# Default mode creates mock-history/*.md files and prints commands.'
+Write-Host '# Default mode creates mock-history/*.md files, prints commands, and stages generated files.'
 Write-Host ''
 
-if ($GenerateFiles -or $Execute) {
-    New-Item -ItemType Directory -Force -Path $OutputDirectory | Out-Null
-    Add-Content -Path (Join-Path $OutputDirectory 'RUN_LOG.md') -Value ('- Generated at {0} with StartDate={1:yyyy-MM-dd}, EndDate={2:yyyy-MM-dd}' -f (Get-Date).ToString('yyyy-MM-dd HH:mm:ss zzz'), $StartDate, $EndDate)
-}
+New-Item -ItemType Directory -Force -Path $OutputDirectory | Out-Null
+Add-Content -Path (Join-Path $OutputDirectory 'RUN_LOG.md') -Value ('- Generated at {0} with StartDate={1:yyyy-MM-dd}, EndDate={2:yyyy-MM-dd}' -f (Get-Date).ToString('yyyy-MM-dd HH:mm:ss zzz'), $StartDate, $EndDate)
 
 for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1)) {
     if ($date.DayOfWeek -eq [DayOfWeek]::Saturday -or $date.DayOfWeek -eq [DayOfWeek]::Sunday) {
@@ -88,14 +89,11 @@ for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1))
         $entry = Get-MockCommitEntry -Date $date -Index $i -Message $message -TimezoneOffset $TimezoneOffset
         Write-Host $entry.Command
 
-        if ($GenerateFiles -or $Execute) {
-            $path = Join-Path $OutputDirectory ($date.ToString('yyyy-MM-dd') + '.md')
-            New-Item -ItemType Directory -Force -Path (Split-Path $path) | Out-Null
-            Add-Content -Path $path -Value ('- {0} {1}' -f $entry.DateText, $entry.Message)
-        }
+        $path = Join-Path $OutputDirectory ($date.ToString('yyyy-MM-dd') + '.md')
+        Add-Content -Path $path -Value ('- {0} {1}' -f $entry.DateText, $entry.Message)
 
         if ($Execute) {
-            git add $path
+            git add -- $path
             git commit --date=$entry.DateText -m $entry.Message
         }
     }
@@ -103,5 +101,25 @@ for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1))
     Write-Host ''
 }
 
+if (-not $NoStage) {
+    git add -- $OutputDirectory
+    Write-Host ('Staged generated files: {0}' -f $OutputDirectory)
+}
 
+if ($CommitGenerated) {
+    git diff --cached --quiet
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host 'No staged generated changes to commit.'
+    } else {
+        git commit -m 'docs: update generated mock history'
+    }
+}
 
+if ($Push) {
+    $branch = git branch --show-current
+    if ([string]::IsNullOrWhiteSpace($branch)) {
+        throw 'Cannot determine current branch for push.'
+    }
+
+    git push origin $branch
+}
