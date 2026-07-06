@@ -3,3 +3,5 @@
 3 memasukkan logic front end
 4 memasukkan assets gambar
 5 finishing untuk WCF equipment
+6 revisi bagian backend versi 2
+7 revisi bagian frontend versi 2
