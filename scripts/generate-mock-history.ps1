@@ -3,9 +3,8 @@
 Generates a tutorial-only mock Git activity schedule.
 
 .DESCRIPTION
-By default this script prints example git commit commands using --date.
-It is intended for tutorial material. Use -GenerateFiles to create
-mock-history/*.md files without committing. It does not execute commits unless
+By default this script creates or updates mock-history/*.md files and prints example git commit commands using --date.
+It is intended for tutorial material. It does not execute commits unless
 -Execute is passed explicitly.
 
 The generated schedule starts at 2026-02-13, ends at 2026-07-06,
@@ -62,9 +61,18 @@ if ($EndDate -lt $StartDate) {
     throw 'EndDate must be greater than or equal to StartDate.'
 }
 
+if (-not $GenerateFiles -and -not $Execute) {
+    $GenerateFiles = $true
+}
+
 Write-Host '# Mock Git Activity Commands'
-Write-Host '# Tutorial output only. Default mode prints commands without executing them.'
+Write-Host '# Default mode creates mock-history/*.md files and prints commands.'
 Write-Host ''
+
+if ($GenerateFiles -or $Execute) {
+    New-Item -ItemType Directory -Force -Path 'mock-history' | Out-Null
+    Add-Content -Path (Join-Path 'mock-history' 'RUN_LOG.md') -Value ('- Generated at {0} with StartDate={1:yyyy-MM-dd}, EndDate={2:yyyy-MM-dd}' -f (Get-Date).ToString('yyyy-MM-dd HH:mm:ss zzz'), $StartDate, $EndDate)
+}
 
 for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1)) {
     if ($date.DayOfWeek -eq [DayOfWeek]::Saturday -or $date.DayOfWeek -eq [DayOfWeek]::Sunday) {
@@ -93,4 +101,5 @@ for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1))
 
     Write-Host ''
 }
+
 

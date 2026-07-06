@@ -8,7 +8,7 @@ Script utama:
 scripts/generate-mock-history.ps1
 ```
 
-Default script hanya mencetak command, tidak menjalankan commit dan tidak membuat file:
+Default script sekarang membuat/update file `mock-history/*.md`, menulis `mock-history/RUN_LOG.md`, dan mencetak command. Script tetap tidak menjalankan commit kecuali memakai `-Execute`:
 
 ```powershell
 ./scripts/generate-mock-history.ps1
@@ -41,4 +41,5 @@ Script juga punya switch `-Execute` untuk menunjukkan bentuk eksekusi dalam tuto
 ```
 
 Untuk repository ini, output jadwal command lengkap sudah tersedia di `MOCK_ACTIVITY_LOG.md` pada branch `main`.
+
 
