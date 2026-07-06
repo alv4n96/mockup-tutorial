@@ -16,6 +16,7 @@ param(
     [datetime]$StartDate = '2026-02-13',
     [datetime]$EndDate = '2026-07-06',
     [string]$TimezoneOffset = '+0700',
+    [string]$OutputDirectory = (Join-Path (Split-Path $PSScriptRoot -Parent) 'mock-history'),
     [switch]$GenerateFiles,
     [switch]$Execute
 )
@@ -70,8 +71,8 @@ Write-Host '# Default mode creates mock-history/*.md files and prints commands.'
 Write-Host ''
 
 if ($GenerateFiles -or $Execute) {
-    New-Item -ItemType Directory -Force -Path 'mock-history' | Out-Null
-    Add-Content -Path (Join-Path 'mock-history' 'RUN_LOG.md') -Value ('- Generated at {0} with StartDate={1:yyyy-MM-dd}, EndDate={2:yyyy-MM-dd}' -f (Get-Date).ToString('yyyy-MM-dd HH:mm:ss zzz'), $StartDate, $EndDate)
+    New-Item -ItemType Directory -Force -Path $OutputDirectory | Out-Null
+    Add-Content -Path (Join-Path $OutputDirectory 'RUN_LOG.md') -Value ('- Generated at {0} with StartDate={1:yyyy-MM-dd}, EndDate={2:yyyy-MM-dd}' -f (Get-Date).ToString('yyyy-MM-dd HH:mm:ss zzz'), $StartDate, $EndDate)
 }
 
 for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1)) {
@@ -88,7 +89,7 @@ for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1))
         Write-Host $entry.Command
 
         if ($GenerateFiles -or $Execute) {
-            $path = Join-Path 'mock-history' ($date.ToString('yyyy-MM-dd') + '.md')
+            $path = Join-Path $OutputDirectory ($date.ToString('yyyy-MM-dd') + '.md')
             New-Item -ItemType Directory -Force -Path (Split-Path $path) | Out-Null
             Add-Content -Path $path -Value ('- {0} {1}' -f $entry.DateText, $entry.Message)
         }
@@ -101,5 +102,6 @@ for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1))
 
     Write-Host ''
 }
+
 
 

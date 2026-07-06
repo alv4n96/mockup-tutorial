@@ -42,4 +42,11 @@ Script juga punya switch `-Execute` untuk menunjukkan bentuk eksekusi dalam tuto
 
 Untuk repository ini, output jadwal command lengkap sudah tersedia di `MOCK_ACTIVITY_LOG.md` pada branch `main`.
 
+## Output Directory
+
+Script selalu menulis ke folder mock-history/ di root repository, meskipun command dijalankan dari folder scripts atau folder lain. Kalau ingin lokasi berbeda, pakai parameter -OutputDirectory.
+
+`powershell
+.\scripts\generate-mock-history.ps1 -OutputDirectory .\mock-history
+`
 
