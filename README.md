@@ -41,3 +41,7 @@ Semua tutorial menggunakan PostgreSQL karena stabil, populer, mudah dijalankan d
 - Simpan audit field seperti `createdAt` dan `updatedAt`.
 - Gunakan transaksi untuk operasi yang mengubah lebih dari satu tabel.
 - Jangan menyimpan secret database ke repository.
+## Mock Activity Log
+
+Lihat `MOCK_ACTIVITY_LOG.md` untuk simulasi timeline aktivitas dari 2026-02-13 sampai 2026-07-06. File tersebut berisi contoh command `git commit --date=<date> -m <Message>` dengan Sabtu dan Minggu dilewati. Ini adalah dokumentasi simulasi, bukan riwayat Git aktual.
+
