@@ -6,6 +6,7 @@ Folder ini adalah struktur utama pembelajaran. Setiap tech stack punya folder se
 
 | Tech Stack | Backend | Frontend | Cocok Untuk |
 | --- | --- | --- | --- |
+| [shared](shared/README.md) | Response envelope, error code, DTO, pagination, module contract, RBAC tenant authorization | Berlaku untuk semua frontend | Aturan umum lintas stack |
 | [modern-saas-t3-next](modern-saas-t3-next/README.md) | Next.js server layer, tRPC, Node.js/Bun, PostgreSQL | Next.js App Router, React 19, Tailwind CSS | SaaS cepat, startup, prototype type-safe |
 | [enterprise-dotnet-spring](enterprise-dotnet-spring/README.md) | .NET atau Spring Boot, PostgreSQL/SQL Server | Angular atau React + TypeScript | Enterprise, sistem besar, audit dan reliability |
 | [typescript-vue-nest](typescript-vue-nest/README.md) | NestJS modular monolith, PostgreSQL | Vue 3, Vite, Vuetify | Pembanding TypeScript di luar React |
@@ -29,3 +30,9 @@ Semua stack di folder ini disebut modular monolith jika memenuhi aturan berikut:
 - Query database berada di repository/infrastructure, bukan di UI atau controller.
 - Modul saling berkomunikasi lewat public contract, application service, atau event, bukan akses tabel sembarang.
 - Shared code tetap kecil dan hanya untuk cross-cutting concern.
+
+
+
+## Blueprint Kode
+
+File `code-blueprint` berisi contoh implementasi yang lebih dekat ke coding nyata: input request, DTO, role/permission RBAC, policy, use case, repository, controller/router, service frontend, dan state UI. Mulai dari [shared/06-rbac-tenant-authorization.md](shared/06-rbac-tenant-authorization.md), lalu lanjut ke blueprint stack yang dipilih.

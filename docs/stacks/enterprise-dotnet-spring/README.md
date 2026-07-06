@@ -20,6 +20,8 @@ Backend:
 5. [backend/05-business-module.md](backend/05-business-module.md)
 6. [backend/06-provider-abstract-factory.md](backend/06-provider-abstract-factory.md)
 7. [backend/07-observability-deployment.md](backend/07-observability-deployment.md)
+8. [backend/08-code-blueprint-dotnet.md](backend/08-code-blueprint-dotnet.md)
+9. [backend/09-code-blueprint-spring.md](backend/09-code-blueprint-spring.md)
 
 Frontend:
 
@@ -28,7 +30,16 @@ Frontend:
 3. [frontend/03-admin-dashboard.md](frontend/03-admin-dashboard.md)
 4. [frontend/04-business-workflow-ui.md](frontend/04-business-workflow-ui.md)
 5. [frontend/05-audit-and-operations-ui.md](frontend/05-audit-and-operations-ui.md)
+6. [frontend/06-code-blueprint-angular-react.md](frontend/06-code-blueprint-angular-react.md)
 
 End-to-end:
 
 - [full-flow.md](full-flow.md)
+
+## Code Blueprint Praktis
+
+Untuk implementasi langsung, baca:
+
+1. [backend/08-code-blueprint-dotnet.md](backend/08-code-blueprint-dotnet.md) untuk .NET response, result, domain, handler, endpoint, RBAC role/permission, dan contoh input.
+2. [backend/09-code-blueprint-spring.md](backend/09-code-blueprint-spring.md) untuk Spring controller, use case, policy RBAC, dan request body.
+3. [frontend/06-code-blueprint-angular-react.md](frontend/06-code-blueprint-angular-react.md) untuk Angular/React service, component, permission-aware UI, dan handling `403`.

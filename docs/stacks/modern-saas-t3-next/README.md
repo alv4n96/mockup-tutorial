@@ -21,6 +21,8 @@ Backend:
 5. [backend/05-task-module.md](backend/05-task-module.md)
 6. [backend/06-billing-abstract-factory.md](backend/06-billing-abstract-factory.md)
 7. [backend/07-testing-deployment.md](backend/07-testing-deployment.md)
+8. [backend/08-code-blueprint-response-error.md](backend/08-code-blueprint-response-error.md)
+9. [backend/09-code-blueprint-identity-organization-task.md](backend/09-code-blueprint-identity-organization-task.md)
 
 Frontend:
 
@@ -29,7 +31,16 @@ Frontend:
 3. [frontend/03-dashboard-organization.md](frontend/03-dashboard-organization.md)
 4. [frontend/04-task-ui-flow.md](frontend/04-task-ui-flow.md)
 5. [frontend/05-settings-billing.md](frontend/05-settings-billing.md)
+6. [frontend/06-code-blueprint-ui-form.md](frontend/06-code-blueprint-ui-form.md)
 
 End-to-end:
 
 - [full-flow.md](full-flow.md)
+
+## Code Blueprint Praktis
+
+Untuk implementasi langsung, baca:
+
+1. [backend/08-code-blueprint-response-error.md](backend/08-code-blueprint-response-error.md) untuk response, error, dan result.
+2. [backend/09-code-blueprint-identity-organization-task.md](backend/09-code-blueprint-identity-organization-task.md) untuk domain task, use case, repository, tRPC router, RBAC role/permission, dan contoh input.
+3. [frontend/06-code-blueprint-ui-form.md](frontend/06-code-blueprint-ui-form.md) untuk form, API state, permission-aware UI, dan handling error `FORBIDDEN`.

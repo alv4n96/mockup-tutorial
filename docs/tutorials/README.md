@@ -6,6 +6,7 @@ Folder ini memecah materi pembelajaran menjadi beberapa file agar setiap branch 
 
 | Urutan | Materi | File |
 | --- | --- | --- |
+| 00 | Belajar pemrograman dari nol sampai project full stack | [00-belajar-pemrograman-dari-nol.md](00-belajar-pemrograman-dari-nol.md) |
 | 01 | Peta produk, stack, dan hasil akhir | [01-roadmap.md](01-roadmap.md) |
 | 02 | Prinsip modular monolith dan layered architecture | [02-architecture.md](02-architecture.md) |
 | 03 | Model domain: user dan modul penghubung | [03-domain-model.md](03-domain-model.md) |
@@ -19,6 +20,7 @@ Folder ini memecah materi pembelajaran menjadi beberapa file agar setiap branch 
 | 11 | Deployment, production checklist, dan operasi | [11-deployment-production.md](11-deployment-production.md) |
 | 12 | Capstone: dari kosong sampai rilis | [12-capstone-end-to-end.md](12-capstone-end-to-end.md) |
 | 13 | Pemetaan materi per branch pembelajaran | [13-branch-implementation-map.md](13-branch-implementation-map.md) |
+| 14 | Step by step programming flow dari database sampai frontend | [14-step-by-step-programming-flow.md](14-step-by-step-programming-flow.md) |
 
 ## Branch Yang Relevan
 
@@ -41,9 +43,14 @@ Semua tutorial memakai pola produk yang sama agar konsepnya mudah dibandingkan a
 
 ## Cara Memakai
 
-1. Baca `01-roadmap.md`.
-2. Pilih track teknologi di file `05` atau `06`.
-3. Ikuti `12-capstone-end-to-end.md` sebagai checklist implementasi berurutan.
-4. Saat membuat branch baru, salin folder ini atau pertahankan struktur file yang sama supaya materi tetap konsisten.
+1. Jika benar-benar baru belajar pemrograman, mulai dari `00-belajar-pemrograman-dari-nol.md`.
+2. Baca `01-roadmap.md`.
+3. Pilih track teknologi di file `05` atau `06`.
+4. Ikuti `12-capstone-end-to-end.md` sebagai checklist implementasi berurutan.
+5. Saat membuat branch baru, salin folder ini atau pertahankan struktur file yang sama supaya materi tetap konsisten.
 
 
+
+## Tutorial Praktik Coding Dari Dasar
+
+Mulai dari [00-belajar-pemrograman-dari-nol.md](00-belajar-pemrograman-dari-nol.md) jika baru pertama belajar. Setelah itu lanjut ke [14-step-by-step-programming-flow.md](14-step-by-step-programming-flow.md) untuk urutan coding yang lebih lengkap dari database, backend, controller/router, API client, sampai frontend form dan list.
