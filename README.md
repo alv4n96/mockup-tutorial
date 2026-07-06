@@ -4,7 +4,7 @@ Repository ini berisi materi pembelajaran full stack yang dipisahkan per branch,
 
 ## Struktur Utama
 
-Materi utama ada di [docs/stacks/README.md](docs/stacks/README.md).
+Indeks dokumentasi ada di [docs/README.md](docs/README.md). Materi utama per tech stack ada di [docs/stacks/README.md](docs/stacks/README.md).
 
 ```text
 docs/
@@ -88,3 +88,4 @@ git switch tutorial/csharp-blazor-bootstrap
 ## Mock Activity Log
 
 Lihat `MOCK_ACTIVITY_LOG.md` untuk simulasi timeline aktivitas dari 2026-02-13 sampai 2026-07-06. File tersebut berisi contoh command `git commit --date=<date> -m <Message>` dengan Sabtu dan Minggu dilewati. Ini adalah dokumentasi simulasi, bukan riwayat Git aktual.
+
