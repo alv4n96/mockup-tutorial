@@ -1,2 +1,5 @@
 1 ayam goreng
->>>>>>> parent of 65f5300 (2)
+2 memasukkan logic back end
+3 memasukkan logic front end
+4 memasukkan assets gambar
+5 finishing untuk WCF equipment
