@@ -44,3 +44,12 @@ Untuk implementasi langsung, baca:
 1. [backend/08-code-blueprint-response-error.md](backend/08-code-blueprint-response-error.md) untuk response, error, dan result.
 2. [backend/09-code-blueprint-identity-organization-task.md](backend/09-code-blueprint-identity-organization-task.md) untuk domain task, use case, repository, tRPC router, RBAC role/permission, dan contoh input.
 3. [frontend/06-code-blueprint-ui-form.md](frontend/06-code-blueprint-ui-form.md) untuk form, API state, permission-aware UI, dan handling error `FORBIDDEN`.
+
+## Mockup siap jalan
+
+Mulai dari [00-mockup-ready-fullstack.md](00-mockup-ready-fullstack.md) untuk project Next.js mockup dari backend sampai frontend, termasuk auth mock, audit log, monitoring, Redis, Kafka, Grafana, AI, dan MCP.
+
+
+## Jalur praktik utama
+
+Untuk praktik utama yang dipecah per langkah, mulai dari [mockup-flow/README.md](mockup-flow/README.md). File `00-mockup-ready-fullstack.md` tetap ada sebagai versi satu file panjang.

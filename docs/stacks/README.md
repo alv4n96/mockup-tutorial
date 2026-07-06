@@ -36,3 +36,12 @@ Semua stack di folder ini disebut modular monolith jika memenuhi aturan berikut:
 ## Blueprint Kode
 
 File `code-blueprint` berisi contoh implementasi yang lebih dekat ke coding nyata: input request, DTO, role/permission RBAC, policy, use case, repository, controller/router, service frontend, dan state UI. Mulai dari [shared/06-rbac-tenant-authorization.md](shared/06-rbac-tenant-authorization.md), lalu lanjut ke blueprint stack yang dipilih.
+
+## Mockup Siap Jalan
+
+Jika ingin tutorial step-by-step yang dipecah kecil dan menjelaskan file mana yang dibuat atau diubah, mulai dari folder berikut:
+
+- [modern-saas-t3-next/mockup-flow/README.md](modern-saas-t3-next/mockup-flow/README.md)
+- [typescript-vue-nest/mockup-flow/README.md](typescript-vue-nest/mockup-flow/README.md)
+- [enterprise-dotnet-spring/mockup-flow/README.md](enterprise-dotnet-spring/mockup-flow/README.md)
+- [shared/07-mockup-auth-observability-ai-messaging.md](shared/07-mockup-auth-observability-ai-messaging.md) untuk convention auth, audit, monitoring, Redis, Kafka, Grafana, AI, dan MCP.

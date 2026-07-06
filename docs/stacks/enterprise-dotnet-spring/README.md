@@ -43,3 +43,12 @@ Untuk implementasi langsung, baca:
 1. [backend/08-code-blueprint-dotnet.md](backend/08-code-blueprint-dotnet.md) untuk .NET response, result, domain, handler, endpoint, RBAC role/permission, dan contoh input.
 2. [backend/09-code-blueprint-spring.md](backend/09-code-blueprint-spring.md) untuk Spring controller, use case, policy RBAC, dan request body.
 3. [frontend/06-code-blueprint-angular-react.md](frontend/06-code-blueprint-angular-react.md) untuk Angular/React service, component, permission-aware UI, dan handling `403`.
+
+## Mockup siap jalan
+
+Mulai dari [00-mockup-ready-fullstack.md](00-mockup-ready-fullstack.md) untuk project .NET + React mockup dari backend sampai frontend, termasuk auth mock, audit log, monitoring, Redis, Kafka, Grafana, AI, dan MCP.
+
+
+## Jalur praktik utama
+
+Untuk praktik utama yang dipecah per langkah, mulai dari [mockup-flow/README.md](mockup-flow/README.md). File `00-mockup-ready-fullstack.md` tetap ada sebagai versi satu file panjang.

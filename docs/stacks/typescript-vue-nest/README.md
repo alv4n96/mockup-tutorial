@@ -39,3 +39,12 @@ Untuk implementasi langsung, baca:
 1. [backend/06-code-blueprint-nest-response.md](backend/06-code-blueprint-nest-response.md) untuk response envelope, exception filter, dan interceptor.
 2. [backend/07-code-blueprint-task-module.md](backend/07-code-blueprint-task-module.md) untuk NestJS module, DTO, domain entity, repository, use case, controller, RBAC role/permission, dan contoh input.
 3. [frontend/04-code-blueprint-vue-composable.md](frontend/04-code-blueprint-vue-composable.md) untuk API client, composable, form, permission-aware UI, dan handling `FORBIDDEN`.
+
+## Mockup siap jalan
+
+Mulai dari [00-mockup-ready-fullstack.md](00-mockup-ready-fullstack.md) untuk project NestJS + Vue mockup dari backend sampai frontend, termasuk auth mock, audit log, monitoring, Redis, Kafka, Grafana, AI, dan MCP.
+
+
+## Jalur praktik utama
+
+Untuk praktik utama yang dipecah per langkah, mulai dari [mockup-flow/README.md](mockup-flow/README.md). File `00-mockup-ready-fullstack.md` tetap ada sebagai versi satu file panjang.

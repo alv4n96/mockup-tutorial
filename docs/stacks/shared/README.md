@@ -10,6 +10,8 @@ Folder ini berisi aturan umum yang dipakai oleh semua tech stack.
 4. [04-pagination-filter-sort.md](04-pagination-filter-sort.md)
 5. [05-module-contracts.md](05-module-contracts.md)
 6. [06-rbac-tenant-authorization.md](06-rbac-tenant-authorization.md)
+7. [07-mockup-auth-observability-ai-messaging.md](07-mockup-auth-observability-ai-messaging.md)
+8. [08-clean-code-refactoring-guru-practical-flow.md](08-clean-code-refactoring-guru-practical-flow.md)
 
 ## Prinsip
 
