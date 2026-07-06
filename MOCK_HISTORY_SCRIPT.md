@@ -8,7 +8,7 @@ Script utama:
 scripts/generate-mock-history.ps1
 ```
 
-Default script hanya mencetak command, tidak menjalankan commit:
+Default script hanya mencetak command, tidak menjalankan commit dan tidak membuat file:
 
 ```powershell
 ./scripts/generate-mock-history.ps1
@@ -19,6 +19,14 @@ Rentang default:
 - Selesai: `2026-07-06`
 - Skip: Sabtu dan Minggu
 - Jumlah command: 3 sampai 6 per hari kerja
+
+Untuk membuat perubahan file nyata tanpa menjalankan commit backdated, gunakan mode berikut:
+
+```powershell
+./scripts/generate-mock-history.ps1 -GenerateFiles
+```
+
+Mode ini membuat file `mock-history/YYYY-MM-DD.md` berisi aktivitas simulasi per hari kerja.
 
 Contoh custom range:
 
@@ -33,3 +41,4 @@ Script juga punya switch `-Execute` untuk menunjukkan bentuk eksekusi dalam tuto
 ```
 
 Untuk repository ini, output jadwal command lengkap sudah tersedia di `MOCK_ACTIVITY_LOG.md` pada branch `main`.
+

@@ -4,7 +4,8 @@ Generates a tutorial-only mock Git activity schedule.
 
 .DESCRIPTION
 By default this script prints example git commit commands using --date.
-It is intended for tutorial material and does not execute commits unless
+It is intended for tutorial material. Use -GenerateFiles to create
+mock-history/*.md files without committing. It does not execute commits unless
 -Execute is passed explicitly.
 
 The generated schedule starts at 2026-02-13, ends at 2026-07-06,
@@ -16,6 +17,7 @@ param(
     [datetime]$StartDate = '2026-02-13',
     [datetime]$EndDate = '2026-07-06',
     [string]$TimezoneOffset = '+0700',
+    [switch]$GenerateFiles,
     [switch]$Execute
 )
 
@@ -77,10 +79,13 @@ for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1))
         $entry = Get-MockCommitEntry -Date $date -Index $i -Message $message -TimezoneOffset $TimezoneOffset
         Write-Host $entry.Command
 
-        if ($Execute) {
+        if ($GenerateFiles -or $Execute) {
             $path = Join-Path 'mock-history' ($date.ToString('yyyy-MM-dd') + '.md')
             New-Item -ItemType Directory -Force -Path (Split-Path $path) | Out-Null
             Add-Content -Path $path -Value ('- {0} {1}' -f $entry.DateText, $entry.Message)
+        }
+
+        if ($Execute) {
             git add $path
             git commit --date=$entry.DateText -m $entry.Message
         }
@@ -88,3 +93,4 @@ for ($date = $StartDate.Date; $date -le $EndDate.Date; $date = $date.AddDays(1))
 
     Write-Host ''
 }
+
