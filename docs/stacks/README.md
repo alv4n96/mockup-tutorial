@@ -45,3 +45,8 @@ Jika ingin tutorial step-by-step yang dipecah kecil dan menjelaskan file mana ya
 - [typescript-vue-nest/mockup-flow/README.md](typescript-vue-nest/mockup-flow/README.md)
 - [enterprise-dotnet-spring/mockup-flow/README.md](enterprise-dotnet-spring/mockup-flow/README.md)
 - [shared/07-mockup-auth-observability-ai-messaging.md](shared/07-mockup-auth-observability-ai-messaging.md) untuk convention auth, audit, monitoring, Redis, Kafka, Grafana, AI, dan MCP.
+
+## Note :
+- yang enterprise-dotnet-spring udah sampai ke nomor 08 untuk backend nya
+- yang modern-saas-t3-next udah sampai ke nomor 07 untuk backend nya
+
