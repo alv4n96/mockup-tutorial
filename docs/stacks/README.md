@@ -49,4 +49,5 @@ Jika ingin tutorial step-by-step yang dipecah kecil dan menjelaskan file mana ya
 ## Note :
 - yang enterprise-dotnet-spring udah sampai ke nomor 08 untuk backend nya
 - yang modern-saas-t3-next udah sampai ke nomor 07 untuk backend nya
+- yang reac
 
