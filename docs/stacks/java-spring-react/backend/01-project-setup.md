@@ -37,7 +37,7 @@ Backend Spring Boot berada di `backend/`. Frontend React Vite berada di `fronten
 - Java 21.
 - Spring Boot stable terbaru.
 - Packaging JAR.
-- Dependencies: Spring Web, Spring Security, Spring Data JPA, PostgreSQL Driver, Flyway, Validation, Lombok, DevTools, Testcontainers, Spring Boot Starter Test.
+- Dependencies dari Spring Initializr: Spring Web, Spring Security, Spring Data JPA, PostgreSQL Driver, Flyway, Validation, Lombok, DevTools, Spring Boot Starter Test. Dependency JWT memakai JJWT dan ditambahkan manual di `pom.xml` setelah project dibuat.
 
 ## Struktur Folder Yang Akan Dibuat
 
@@ -82,7 +82,28 @@ curl https://start.spring.io/starter.zip \
   -o backend.zip
 ```
 
+Catatan: dependency `web,security,data-jpa,postgresql,flyway,validation,lombok,devtools` adalah dependency yang bisa dipilih dari Spring Initializr. Library JWT `io.jsonwebtoken` tidak otomatis ikut dari quickstart ini, jadi tambahkan manual di `backend/pom.xml` seperti contoh full source `pom.xml` di bawah.
+
 Command menjalankan backend:
+
+sebelum jalankan, jangan lupa buat database, dan juga atur di appication.properties
+example :
+
+```dotenv
+spring.application.name=backend
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/tumbas_app
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.show-sql=true
+
+spring.flyway.enabled=true
+```
+
+
 
 ```bash
 cd backend
