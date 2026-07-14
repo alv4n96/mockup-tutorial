@@ -153,6 +153,10 @@ package com.example.springreact.modules.task.domain;
 
 `PageRequestParams` dan `PageResponse` diletakkan di `common` karena pagination adalah kontrak lintas module. Sebaliknya, entity seperti `Project` dan `Task` tidak boleh diletakkan di `common` karena itu milik business module tertentu.
 
+Pada deklarasi record, setiap komponen wajib memiliki tipe data. Jadi parameter pagination harus ditulis seperti `@Min(0) int page`, bukan `@Min(0) page`. Jika tipe `int` hilang, compiler gagal membaca sintaks record sebelum masuk ke blok compact constructor.
+
+Kondisi `if (size == 0)` dipakai untuk memberi default `20` saat request tidak mengirim `size` dan binding primitive `int` menghasilkan nilai awal `0`. Setelah constructor selesai, nilai `size` yang tersimpan tetap `20`, sehingga aturan `@Min(1)` masih selaras dengan nilai final yang divalidasi.
+
 ## Cara Menjalankan
 
 Belum ada behavior baru. Pastikan compile:
@@ -170,6 +174,7 @@ Cek struktur package di IDE. Pastikan tidak ada controller atau service global y
 
 - Jika package tidak terbaca, cek path `src/main/java/com/example/springreact`.
 - Jika command `mkdir -p` gagal di Windows, pakai command PowerShell.
+- Jika `PageRequestParams` gagal compile pada deklarasi record, cek apakah setiap komponen sudah punya tipe data. Contoh benar: `@Min(0) int page`.
 - Jika ada circular dependency antar module, pindahkan kontrak lintas module ke `application` service atau `common` hanya jika benar-benar reusable.
 
 ## Checklist Akhir
