@@ -103,7 +103,7 @@ public record ApiResponse<T>(
     return new ApiResponse<>(true, data, List.of());
   }
 
-  public static ApiResponse<Void> success() {
+  public static ApiResponse<Void> ok() {
     return new ApiResponse<>(true, null, List.of());
   }
 
@@ -241,6 +241,7 @@ public class GlobalExceptionHandler {
 ## Penjelasan Kode Penting
 
 - `ApiResponse<T>` membuat frontend selalu membaca `success`, `data`, dan `errors`.
+- Helper tanpa data diberi nama `ok()`, bukan `success()`, karena record component `boolean success` otomatis membuat accessor instance bernama `success()`. Static method `success()` tanpa parameter akan bentrok dengan accessor record tersebut.
 - `BusinessException` dipakai untuk error bisnis, bukan bug sistem.
 - `GlobalExceptionHandler` mengubah exception menjadi HTTP status dan body yang konsisten.
 
@@ -259,6 +260,7 @@ Nanti saat endpoint register tersedia, kirim email kosong. Response harus berisi
 
 - Jika response error masih HTML, pastikan controller adalah REST controller dan exception tidak ditangkap filter lain.
 - Jika field validation tidak muncul, pastikan request DTO memakai annotation `jakarta.validation`.
+- Jika muncul error method `success()` sudah ada di `ApiResponse`, pastikan helper response kosong memakai `ApiResponse.ok()`.
 - Jika status selalu 500, cek mapping `BusinessException`.
 
 ## Checklist Akhir
