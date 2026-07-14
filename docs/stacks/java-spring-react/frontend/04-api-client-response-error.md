@@ -123,7 +123,7 @@ export function toUserMessage(error: unknown) {
 }
 ```
 
-`	sx
+```	tsx
 // frontend/src/components/ui/ToastExample.tsx
 import { toUserMessage } from "@/lib/errors/errorMapper";
 

@@ -229,7 +229,7 @@ public class ProjectController {
   public ApiResponse<Void> delete(@AuthenticationPrincipal CurrentUser user, @RequestParam UUID organizationId,
       @PathVariable UUID projectId) {
     service.delete(user.id(), organizationId, projectId);
-    return ApiResponse.success();
+    return ApiResponse.ok();
   }
 }
 ```

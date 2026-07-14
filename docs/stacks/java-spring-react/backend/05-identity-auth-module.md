@@ -198,6 +198,8 @@ public record CurrentUser(UUID id, String email) {
 }
 ```
 
+Catatan dependency JWT: class `Keys` berasal dari JJWT, bukan dari Spring Security. Dependency ini tidak otomatis ada dari Spring Boot quickstart/Initializr. Jika project dibuat dari quickstart, tambahkan JJWT manual di `backend/pom.xml`: property `jjwt.version` masuk ke blok `<properties>`, lalu `jjwt-api`, `jjwt-impl`, dan `jjwt-jackson` masuk ke blok `<dependencies>`. Contoh lengkapnya ada di `01-project-setup.md`. Import yang benar untuk file ini adalah `io.jsonwebtoken.security.Keys`.
+
 ```java
 // backend/src/main/java/com/example/springreact/common/security/JwtService.java
 package com.example.springreact.common.security;
@@ -281,6 +283,8 @@ public final class AuthDtos {
   public record MeResponse(UUID id, String email, String name) {}
 }
 ```
+
+Catatan `PasswordEncoder`: interface ini berasal dari Spring Security (`org.springframework.security.crypto.password.PasswordEncoder`). Pastikan dependency `spring-boot-starter-security` sudah ada dari setup awal. Bean-nya dibuat di `SecurityConfig` lewat `@Bean public PasswordEncoder passwordEncoder()`. Jika mengetik file secara berurutan, buat `SecurityConfig` dulu atau lanjutkan sampai bagian `SecurityConfig` selesai agar warning IDE/autowire hilang.
 
 ```java
 // backend/src/main/java/com/example/springreact/modules/identity/application/AuthService.java
@@ -448,7 +452,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
   @Bean
-  SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtFilter) throws Exception {
+  public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtFilter) throws Exception {
     return http
         .csrf(csrf -> csrf.disable())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -461,7 +465,7 @@ public class SecurityConfig {
   }
 
   @Bean
-  PasswordEncoder passwordEncoder() {
+  public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 }
@@ -515,7 +519,7 @@ public class AuthController {
   @PostMapping("/logout")
   public ApiResponse<Void> logout(@Valid @RequestBody LogoutRequest request) {
     authService.logout(request.refreshToken());
-    return ApiResponse.success();
+    return ApiResponse.ok();
   }
 
   @GetMapping("/me")
@@ -547,6 +551,8 @@ curl -X POST http://localhost:8080/api/auth/login \
 ## Troubleshooting
 
 - Jika JWT parse error membuat semua request gagal, tangkap exception filter dengan response `UNAUTHORIZED`.
+- Jika `import io.jsonwebtoken.security.Keys` tidak ditemukan, cek apakah `jjwt.version` sudah ada di `<properties>` dan `jjwt-api` sudah ada di `<dependencies>` pada `pom.xml`, lalu reload Maven project.
+- Jika `PasswordEncoder` tidak ditemukan, cek dependency `spring-boot-starter-security` dan import `org.springframework.security.crypto.password.PasswordEncoder`. Jika hanya muncul warning bean/autowire, pastikan `SecurityConfig` sudah dibuat dan memiliki `@Bean public PasswordEncoder passwordEncoder()`.
 - Jika login seed gagal, hash password di seed tidak cocok.
 - Jika `@AuthenticationPrincipal` null, cek `JwtAuthenticationFilter`.
 

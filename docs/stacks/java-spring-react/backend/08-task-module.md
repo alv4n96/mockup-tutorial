@@ -287,7 +287,7 @@ public class TaskController {
   public ApiResponse<Void> delete(@AuthenticationPrincipal CurrentUser user, @RequestParam UUID organizationId,
       @RequestParam UUID projectId, @PathVariable UUID taskId) {
     service.delete(user.id(), organizationId, projectId, taskId);
-    return ApiResponse.success();
+    return ApiResponse.ok();
   }
 }
 ```
